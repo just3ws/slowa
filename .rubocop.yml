@@ -1,0 +1,56 @@
+---
+require:
+  - rubocop-rspec
+
+AllCops:
+  DefaultFormatter: fuubar
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  MaxFilesInCache: 2048
+  TargetRubyVersion: 2.5
+  UseCache: true
+  Exclude:
+    - 'db/schema.rb'
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Metrics/MethodLength:
+  Enabled: false
+
+Lint/Debugger:
+  Enabled: false
+
+RSpec/ContextWording:
+  Prefixes:
+    - given
+    - when
+    - then
+    - is
+    - has
+
+RSpec/NestedGroups:
+  Enabled: false

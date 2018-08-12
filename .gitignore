@@ -1,8 +1,13 @@
 *.rbc
 capybara-*.html
 .rspec
-/log
-/tmp
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
@@ -12,7 +17,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
-# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
+# Ignore master key for decrypting credentials and more.
 config/initializers/secret_token.rb
 config/master.key
 
@@ -46,4 +51,3 @@ bower.json
 
 # Ignore node_modules
 node_modules/
-
