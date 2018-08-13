@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'biscotti'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
@@ -22,13 +24,10 @@ gem 'puma', '~> 3.11'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri]
-  gem 'pry-byebug'
-end
+gem 'awesome_print'
 
 group :development do
+  gem 'annotate', require: false
   gem 'fuubar', require: false
   gem 'guard-rspec', require: false
   gem 'rspec-rails', require: false
@@ -36,5 +35,14 @@ group :development do
   gem 'rubocop-rspec', require: false
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: %i[mri]
+  gem 'pry-byebug'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+end
+
 gem 'tzinfo-data', platforms: %i[jruby]
