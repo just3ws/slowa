@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20_180_812_224_250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
-  create_table 'cookies', force: :cascade do |t|
+  create_table 'letter_jumbles', force: :cascade do |t|
     t.string 'letters', null: false
     t.string 'words', default: [], array: true
     t.integer 'version'

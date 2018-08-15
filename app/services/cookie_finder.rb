@@ -2,15 +2,15 @@
 
 require 'biscotti/letters'
 
-class CookieFinder
-  attr_reader :letters, :cookie
+class LetterJumbleFinder
+  attr_reader :letters, :letter_jumble
 
   def initialize(letters)
     @letters = letters
   end
 
   def call
-    @cookie = Cookie.find_or_initialize_by(letters: Biscotti::Letters.format(letters))
+    @letter_jumble = LetterJumble.find_or_initialize_by(letters: Biscotti::Letters.format(letters))
 
     self
   end

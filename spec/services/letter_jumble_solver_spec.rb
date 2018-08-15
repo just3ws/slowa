@@ -2,5 +2,5 @@
 
 require 'rails_helper'
 
-RSpec.describe CookieMaker, type: :model do
+RSpec.describe LetterJumbleSolver, type: :model do
 end

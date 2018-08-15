@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: cookies
+# Table name: letter_jumbles
 #
 #  id         :bigint(8)        not null, primary key
 #  letters    :string           not null
@@ -14,7 +14,7 @@
 
 require 'biscotti/letters'
 
-class Cookie < ApplicationRecord
+class LetterJumble < ApplicationRecord
   VERSION_DEFAULT = 1
 
   LETTERS_COUNT_MIN = 2
