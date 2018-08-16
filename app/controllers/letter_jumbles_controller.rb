@@ -4,12 +4,10 @@ class LetterJumblesController < ApplicationController
   def create; end
 
   def show
-    ap show_params
-  end
+    letters = params.require(:letters)
 
-  protected
+    letter_jumble = LetterJumbleSolver.new(letters: letters).call.letter_jumble
 
-  def show_params
-    params.permit(:id)
+    render json: LetterJumbleSerializer.new(letter_jumble)
   end
 end

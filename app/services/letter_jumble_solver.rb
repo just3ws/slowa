@@ -5,12 +5,12 @@ require 'biscotti'
 class LetterJumbleSolver
   attr_reader :letters, :letter_jumble
 
-  def initialize(letters)
+  def initialize(letters:)
     @letters = letters
   end
 
   def call
-    @letter_jumble = letter_jumbleFinder.new(letters).call.letter_jumble
+    @letter_jumble = LetterJumbleFinder.new(letters: letters).call.letter_jumble
 
     return self if letter_jumble.persisted?
 

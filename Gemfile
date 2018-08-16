@@ -25,7 +25,7 @@ gem 'puma', '~> 3.11'
 gem 'awesome_print'
 
 gem 'fast_jsonapi'
-gem 'jsonapi-rails'
+# gem 'jsonapi-rails'
 
 group :development do
   gem 'annotate', require: false

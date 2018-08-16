@@ -3,7 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe LetterJumblesController, type: :controller do
-  it do
-    get letter_jumbles_path(id: 1)
+  let(:letter_jumble) { LetterJumbleSolver.new(letters: 'hello').call.letter_jumble }
+
+  it 'find by letters' do
+    get :show, params: { letters: letter_jumble.letters }
+
+    ap response.headers
+    ap response.body
   end
 end

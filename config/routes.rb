@@ -8,5 +8,6 @@
 #  letter_jumble GET  /letter_jumbles/:id(.:format) letter_jumbles#show
 
 Rails.application.routes.draw do
-  resources :letter_jumbles, only: %i[show create index]
+  resources :letter_jumbles, only: %i[create index]
+  get '/letter_jumbles/:letters' => 'letter_jumbles#show'
 end
