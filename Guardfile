@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+notification :off
+
 # rubocop:disable Metrics/BlockLength
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'

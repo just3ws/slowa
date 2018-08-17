@@ -1,12 +1,15 @@
-example_id                                                | status | run_time        |
---------------------------------------------------------- | ------ | --------------- |
-./spec/controllers/letter_jumbles_controller_spec.rb[1:1] | passed | 0.07784 seconds |
-./spec/models/letter_jumble_spec.rb[1:1:1]                | passed | 0.02542 seconds |
-./spec/models/letter_jumble_spec.rb[1:1:2]                | passed | 0.00445 seconds |
-./spec/models/letter_jumble_spec.rb[1:1:3]                | passed | 0.00953 seconds |
-./spec/models/letter_jumble_spec.rb[1:1:4]                | passed | 0.0089 seconds  |
-./spec/models/letter_jumble_spec.rb[1:1:5]                | passed | 0.00489 seconds |
-./spec/models/letter_jumble_spec.rb[1:1:6]                | passed | 0.0078 seconds  |
-./spec/routing_spec.rb[1:1:1]                             | passed | 0.00515 seconds |
-./spec/routing_spec.rb[1:1:2]                             | passed | 0.00124 seconds |
-./spec/routing_spec.rb[1:1:3]                             | passed | 0.00115 seconds |
+example_id                                                    | status | run_time        |
+------------------------------------------------------------- | ------ | --------------- |
+./spec/controllers/letter_jumbles_controller_spec.rb[1:1:1]   | passed | 0.85887 seconds |
+./spec/controllers/letter_jumbles_controller_spec.rb[1:2:1:1] | passed | 0.03617 seconds |
+./spec/controllers/letter_jumbles_controller_spec.rb[1:2:2:1] | passed | 0.0032 seconds  |
+./spec/controllers/letter_jumbles_controller_spec.rb[1:2:2:2] | passed | 0.00461 seconds |
+./spec/models/letter_jumble_spec.rb[1:1:1]                    | passed | 0.00854 seconds |
+./spec/models/letter_jumble_spec.rb[1:1:2]                    | passed | 0.00501 seconds |
+./spec/models/letter_jumble_spec.rb[1:1:3]                    | passed | 0.00479 seconds |
+./spec/models/letter_jumble_spec.rb[1:1:4]                    | passed | 0.00846 seconds |
+./spec/models/letter_jumble_spec.rb[1:1:5]                    | passed | 0.0065 seconds  |
+./spec/models/letter_jumble_spec.rb[1:1:6]                    | passed | 0.00658 seconds |
+./spec/routing_spec.rb[1:1:1]                                 | passed | 0.00174 seconds |
+./spec/routing_spec.rb[1:1:2]                                 | passed | 0.00119 seconds |
+./spec/routing_spec.rb[1:1:3]                                 | passed | 0.00118 seconds |

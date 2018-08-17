@@ -3,12 +3,38 @@
 require 'rails_helper'
 
 RSpec.describe LetterJumblesController, type: :controller do
-  let(:letter_jumble) { LetterJumbleSolver.new(letters: 'hello').call.letter_jumble }
+  let(:letters) { Faker::Lorem.word.slice(0, 8) }
 
-  it 'find by letters' do
-    get :show, params: { letters: letter_jumble.letters }
+  describe 'POST #create' do
+    let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
 
-    ap response.headers
-    ap response.body
+    before { post(:create, params: { letters: letter_jumble.letters }) }
+
+    it 'find by letters' do
+      ap response.headers
+      ap response.body
+    end
+  end
+
+  describe 'GET #show' do
+    subject { response }
+
+    before { get(:show, params: { letters: letter_jumble.letters }) }
+
+    context 'ok' do
+      let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
+
+      it { is_expected.to have_http_status(:ok) }
+    end
+
+    context 'not_found' do
+      let(:letter_jumble) { LetterJumbleFinder.new(letters: letters).call.letter_jumble }
+
+      it { is_expected.to have_http_status(:not_found) }
+
+      it 'responds as JSON API' do
+        expect(response.content_type).to eq 'application/vnd.api+json'
+      end
+    end
   end
 end
