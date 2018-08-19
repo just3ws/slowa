@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe LetterJumblesController, type: :controller do
+  subject { response }
+
   let(:letters) { Faker::Lorem.word.slice(0, 8) }
 
   describe 'POST #create' do
@@ -10,15 +12,12 @@ RSpec.describe LetterJumblesController, type: :controller do
 
     before { post(:create, params: { letters: letter_jumble.letters }) }
 
-    it 'find by letters' do
-      ap response.headers
-      ap response.body
+    context 'ok' do
+      it { is_expected.to have_http_status(:ok) }
     end
   end
 
   describe 'GET #show' do
-    subject { response }
-
     before { get(:show, params: { letters: letter_jumble.letters }) }
 
     context 'ok' do

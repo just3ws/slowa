@@ -1,3 +1,3 @@
-# biscotti-web
+# letter-jumble
 
-Web app for the Biscotti word descrambler.
+Web app for the Biscotti letter jumble solver.
