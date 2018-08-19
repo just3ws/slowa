@@ -32,6 +32,7 @@ group :development do
   gem 'fuubar', require: false
   gem 'guard-rspec', require: false
   gem 'rspec-rails', require: false
+  gem 'rspec_junit_formatter', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
 end
