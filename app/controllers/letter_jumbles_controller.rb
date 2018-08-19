@@ -17,7 +17,7 @@ class LetterJumblesController < ApplicationController
 
   protected
 
-    def letters
-      @letters ||= params.require(:letters)
-    end
+  def letters
+    @letters ||= params.require(:letters)
+  end
 end

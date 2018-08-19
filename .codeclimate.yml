@@ -1,0 +1,35 @@
+---
+version: 2
+plugins:
+  markdownlint:
+    enabled: true
+  fixme:
+    enabled: true
+  shellcheck:
+    enabled: true
+  brakeman:
+    enabled: true
+  reek:
+    enabled: true
+  flog:
+    enabled: true
+    config:
+      score_threshold: 20.0
+  bundler-audit:
+    enabled: true
+  rubocop:
+    enabled: true
+    channel: rubocop-0-52
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - ruby
+ratings:
+  paths:
+    - '**.rb'
+exclude_patterns:
+  - spec/
+  - .bettercodehub.yml
+  - .codeclimate.yml
+  - .fasterer.yml

@@ -32,7 +32,7 @@ class LetterJumble < ApplicationRecord
 
   private
 
-    def format_letters
-      self.letters = Letters.format(letters) if letters.present?
-    end
+  def format_letters
+    self.letters = Letters.format(letters) if letters.present?
+  end
 end

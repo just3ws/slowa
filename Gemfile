@@ -29,23 +29,34 @@ gem 'fast_jsonapi'
 
 group :development do
   gem 'annotate', require: false
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
+  gem 'fasterer', require: false
+  gem 'flog', require: false
   gem 'fuubar', require: false
+  gem 'guard', require: false
   gem 'guard-rspec', require: false
+  gem 'mdl', require: false
+  gem 'mry', require: false
+  gem 'reek', require: false
   gem 'rspec-rails', require: false
-  gem 'rspec_junit_formatter', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rubocop-thread_safety', require: false
+  gem 'ruby-lint', require: false
+  gem 'rubycritic', require: false
+  gem 'sandi_meter', require: false
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri]
-  gem 'faker'
-  gem 'pry-byebug'
+  gem 'byebug', require: false
+  gem 'faker', require: false
+  gem 'pry', require: false
+  gem 'pry-byebug', require: false
 end
 
 group :test do
+  gem 'rspec_junit_formatter', require: false
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov', require: false
 end
-
-gem 'tzinfo-data', platforms: %i[jruby]

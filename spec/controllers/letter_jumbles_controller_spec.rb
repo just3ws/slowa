@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'faker'
 require 'rails_helper'
 
 RSpec.describe LetterJumblesController, type: :controller do
