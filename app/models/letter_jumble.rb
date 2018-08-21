@@ -17,7 +17,7 @@ require 'letters'
 class LetterJumble < ApplicationRecord
   VERSION_DEFAULT = 1
 
-  LETTERS_COUNT_MIN = 2
+  LETTERS_COUNT_MIN = 1
   LETTERS_COUNT_MAX = 8
 
   attribute :version, default: -> { VERSION_DEFAULT }
