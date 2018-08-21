@@ -13,8 +13,28 @@ RSpec.describe LetterJumblesController, type: :controller do
 
     before { post(:create, params: { letters: letter_jumble.letters }) }
 
+    let(:payload) { JSON.parse(subject.body, symbolize_names: true) }
+
     context 'ok' do
       it { is_expected.to have_http_status(:ok) }
+
+      it 'has letters' do
+        expect(payload.dig(:data, :attributes, :letters)).to eq(letters.downcase.split('').sort.join)
+      end
+
+      it 'has words' do
+        expect(payload.dig(:data, :attributes, :words)).not_to be_empty
+      end
+    end
+
+    context 'not_acceptable' do
+      let(:letters) { 'thiswordiswaytoolong' }
+
+      it { is_expected.to have_http_status(:not_acceptable) }
+
+      it 'has errors' do
+        expect(payload).not_to be_empty
+      end
     end
   end
 

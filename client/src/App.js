@@ -38,10 +38,6 @@ class Words extends Component {
 }
 
 class App extends Component {
-  renderWord(w) {
-    return <Word value={w} />;
-  }
-
   render() {
     return (
       <div className="App">

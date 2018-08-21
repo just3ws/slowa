@@ -38,6 +38,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'mdl', require: false
   gem 'mry', require: false
+  gem 'pry-rails'
   gem 'reek', require: false
   gem 'rspec-rails', require: false
   gem 'rubocop', require: false

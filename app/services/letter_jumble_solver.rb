@@ -12,7 +12,7 @@ class LetterJumbleSolver
   def call
     @letter_jumble = LetterJumbleFinder.new(letters: letters).call.letter_jumble
 
-    return self if letter_jumble.persisted?
+    return self if letter_jumble.persisted? || letter_jumble.invalid?
 
     dictionary = Biscotti.load_dictionary(Rails.root.join('data', 'dictionaries', 'basic.lst').freeze)
 
