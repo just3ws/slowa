@@ -1,6 +1,26 @@
 # frozen_string_literal: true
 
 class LetterJumblesController < ApplicationController
+  def index
+    page_length = 10
+
+    letter_jumbles = LetterJumble
+                     .order(id: :desc)
+                     .limit(page_length)
+
+    options = {
+      meta: {
+        total: letter_jumbles.count
+      },
+      links: {
+        self: letter_jumbles_path
+      },
+      is_collection: true
+    }
+
+    render(json: LetterJumbleSerializer.new(letter_jumbles, options))
+  end
+
   def show
     letter_jumble = LetterJumbleFinder.new(letters: letters).call.letter_jumble
 
