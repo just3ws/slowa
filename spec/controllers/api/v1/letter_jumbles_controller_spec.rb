@@ -8,13 +8,11 @@ module API
       subject { response }
 
       let(:letters) { Faker::Lorem.word.slice(0, 8) }
+      let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
+      let(:payload) { JSON.parse(subject.body, symbolize_names: true) }
 
       describe 'POST #create' do
-        let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
-
         before { post(:create, params: { id: letter_jumble.letters }) }
-
-        let(:payload) { JSON.parse(subject.body, symbolize_names: true) }
 
         context 'ok' do
           it { is_expected.to have_http_status(:ok) }
