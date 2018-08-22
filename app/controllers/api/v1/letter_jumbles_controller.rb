@@ -42,11 +42,11 @@ module API
           },
           is_collection: true,
           links: {
-            first: letter_jumbles_url,
-            last: letter_jumbles_url(page: total),
-            self: letter_jumbles_url(page: current),
-            prev: letter_jumbles_url(page: (current > 1 ? (current - 1) : nil)),
-            next:     letter_jumbles_url(page: (current == total ? nil : (current + 1)))
+            first: api_v1_letter_jumbles_url,
+            last: api_v1_letter_jumbles_url(page: total),
+            self: api_v1_letter_jumbles_url(page: current),
+            prev: api_v1_letter_jumbles_url(page: (current > 1 ? (current - 1) : nil)),
+            next: api_v1_letter_jumbles_url(page: (current == total ? nil : (current + 1)))
           }
         }
       end

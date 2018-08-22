@@ -7,52 +7,72 @@ module API
     RSpec.describe LetterJumblesController, type: :controller do
       subject { response }
 
-      let(:letters) { Faker::Lorem.word.slice(0, 8) }
+      let(:letters) { 'hello' }
       let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
       let(:payload) { JSON.parse(subject.body, symbolize_names: true) }
 
       describe 'POST #create' do
         before { post(:create, params: { id: letter_jumble.letters }) }
 
-        context 'ok' do
-          it { is_expected.to have_http_status(:ok) }
+        it 'responds as JSON API' do
+          expect(response.content_type).to eq('application/vnd.api+json')
+        end
 
-          it 'has letters' do
+        context 'when receiving a new set of valid letters' do
+          it 'responds with status code :ok (200)' do
+            is_expected.to have_http_status(:ok)
+          end
+
+          it 'responds with formatted letters' do
             expect(payload.dig(:data, :attributes, :letters)).to eq(letters.downcase.split('').sort.join)
           end
 
-          it 'has words' do
+          it 'responds with array of words' do
             expect(payload.dig(:data, :attributes, :words)).not_to be_empty
           end
         end
 
-        context 'not_acceptable' do
+        context 'when receiving an invalid request' do
           let(:letters) { 'thiswordiswaytoolong' }
 
-          it { is_expected.to have_http_status(:not_acceptable) }
+          it 'responds with status code :not_acceptable (406)' do
+            is_expected.to have_http_status(:not_acceptable)
+          end
 
-          it 'has errors' do
+          it 'responds with errors' do
             expect(payload).not_to be_empty
           end
+        end
+      end
+
+      describe 'GET #index' do
+        before { get(:index) }
+
+        it 'responds as JSON API' do
+          expect(response.content_type).to eq('application/vnd.api+json')
         end
       end
 
       describe 'GET #show' do
         before { get(:show, params: { id: letter_jumble.letters }) }
 
-        context 'ok' do
-          let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
-
-          it { is_expected.to have_http_status(:ok) }
+        it 'responds as JSON API' do
+          expect(response.content_type).to eq('application/vnd.api+json')
         end
 
-        context 'not_found' do
+        context 'when receiving an existing set of valid letters' do
+          let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
+
+          it 'responds with status code :ok (200)' do
+            is_expected.to have_http_status(:ok)
+          end
+        end
+
+        context 'when receiving an non-existent set of valid letters' do
           let(:letter_jumble) { LetterJumbleFinder.new(letters: letters).call.letter_jumble }
 
-          it { is_expected.to have_http_status(:not_found) }
-
-          it 'responds as JSON API' do
-            expect(response.content_type).to eq 'application/vnd.api+json'
+          it 'responds with a not_found status code (404)' do
+            is_expected.to have_http_status(:not_found)
           end
         end
       end
