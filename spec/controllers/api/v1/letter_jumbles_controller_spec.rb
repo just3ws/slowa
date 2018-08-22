@@ -8,7 +8,7 @@ module API
       subject { response }
 
       let(:letters) { 'hello' }
-      let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
+      let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.data }
       let(:payload) { JSON.parse(subject.body, symbolize_names: true) }
 
       describe 'POST #create' do
@@ -61,7 +61,7 @@ module API
         end
 
         context 'when receiving an existing set of valid letters' do
-          let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.letter_jumble }
+          let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.data }
 
           it 'responds with status code :ok (200)' do
             is_expected.to have_http_status(:ok)
@@ -69,7 +69,7 @@ module API
         end
 
         context 'when receiving an non-existent set of valid letters' do
-          let(:letter_jumble) { LetterJumbleFinder.new(letters: letters).call.letter_jumble }
+          let(:letter_jumble) { LetterJumbleFinder.new(letters: letters).call.data }
 
           it 'responds with a not_found status code (404)' do
             is_expected.to have_http_status(:not_found)

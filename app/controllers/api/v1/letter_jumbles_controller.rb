@@ -13,7 +13,7 @@ module API
       end
 
       def show
-        letter_jumble = LetterJumbleFinder.new(letters: letters).call.letter_jumble
+        letter_jumble = LetterJumbleFinder.new(letters: letters).call.data
 
         head(:not_found) && return unless letter_jumble.persisted?
 
@@ -21,7 +21,7 @@ module API
       end
 
       def create
-        letter_jumble = LetterJumbleSolver.new(letters: letters).call.letter_jumble
+        letter_jumble = LetterJumbleSolver.new(letters: letters).call.data
 
         render(status: :not_acceptable, json: json_api_errors_for(letter_jumble)) && return if letter_jumble.invalid?
 

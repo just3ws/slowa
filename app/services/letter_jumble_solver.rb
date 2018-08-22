@@ -3,22 +3,22 @@
 require 'biscotti'
 
 class LetterJumbleSolver
-  attr_reader :letters, :letter_jumble
+  attr_reader :letters, :data
 
   def initialize(letters:)
     @letters = letters
   end
 
   def call
-    @letter_jumble = LetterJumbleFinder.new(letters: letters).call.letter_jumble
+    @data = LetterJumbleFinder.new(letters: letters).call.data
 
-    return self if letter_jumble.persisted? || letter_jumble.invalid?
+    return self if data.persisted? || data.invalid?
 
     dictionary = Biscotti.load_dictionary(Rails.root.join('data', 'dictionaries', 'basic.lst').freeze)
 
-    letter_jumble.words = Biscotti.find_words(letters, dictionary: dictionary, min_word_length: 2)
+    data.words = Biscotti.find_words(letters, dictionary: dictionary, min_word_length: 2)
 
-    letter_jumble.save!
+    data.save!
 
     self
   end
