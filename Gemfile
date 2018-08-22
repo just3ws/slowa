@@ -22,7 +22,9 @@ gem 'puma', '~> 3.11'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'api-pagination'
 gem 'awesome_print'
+gem 'kaminari'
 
 gem 'fast_jsonapi'
 # gem 'jsonapi-rails'

@@ -47,6 +47,7 @@ GEM
     annotate (2.7.4)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
+    api-pagination (4.8.1)
     arel (9.0.0)
     ast (2.4.0)
     awesome_print (1.8.0)
@@ -118,6 +119,18 @@ GEM
     ice_nine (0.11.2)
     jaro_winkler (1.5.1)
     json (2.1.0)
+    kaminari (1.1.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.1.1)
+      kaminari-activerecord (= 1.1.1)
+      kaminari-core (= 1.1.1)
+    kaminari-actionview (1.1.1)
+      actionview
+      kaminari-core (= 1.1.1)
+    kaminari-activerecord (1.1.1)
+      activerecord
+      kaminari-core (= 1.1.1)
+    kaminari-core (1.1.1)
     kramdown (1.17.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -300,6 +313,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  api-pagination
   awesome_print
   biscotti
   brakeman
@@ -312,6 +326,7 @@ DEPENDENCIES
   fuubar
   guard
   guard-rspec
+  kaminari
   mdl
   mry
   pg (>= 0.18, < 2.0)
