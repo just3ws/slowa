@@ -9,11 +9,10 @@ module API
         options = json_api_pagination_for(collection)
 
         render(json: LetterJumbleSerializer.new(collection, options))
-        # paginate(json: collection)
       end
 
       def show
-        letter_jumble = LetterJumbleFinder.new(letters: letters).call.data
+        letter_jumble = LetterJumble.find_or_initialize_by(letters: Letters.format(letters))
 
         head(:not_found) && return unless letter_jumble.persisted?
 
@@ -31,8 +30,6 @@ module API
       protected
 
       def json_api_pagination_for(collection)
-        # collection = scope.page(params[:page]).per((params[:per_page] || default_per_page).to_i)
-
         current = collection.current_page
         total = collection.total_pages
 

@@ -30,6 +30,8 @@ class LetterJumble < ApplicationRecord
 
   before_validation :format_letters
 
+  scope :with_letters_formatted, ->(letters) { where(letters: Letters.format(letters)) }
+
   private
 
   def format_letters

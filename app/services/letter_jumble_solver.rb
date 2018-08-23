@@ -10,7 +10,7 @@ class LetterJumbleSolver
   end
 
   def call
-    @data = LetterJumbleFinder.new(letters: letters).call.data
+    @data = LetterJumble.find_or_initialize_by(letters: Letters.format(letters))
 
     return self if data.persisted? || data.invalid?
 

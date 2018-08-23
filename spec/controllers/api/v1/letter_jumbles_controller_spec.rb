@@ -69,7 +69,7 @@ module API
         end
 
         context 'when receiving an non-existent set of valid letters' do
-          let(:letter_jumble) { LetterJumbleFinder.new(letters: letters).call.data }
+          let(:letter_jumble) { LetterJumble.find_or_initialize_by(letters: Letters.format(letters)) }
 
           it 'responds with a not_found status code (404)' do
             is_expected.to have_http_status(:not_found)
