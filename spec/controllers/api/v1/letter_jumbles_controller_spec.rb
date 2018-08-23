@@ -8,6 +8,7 @@ module API
       subject { response }
 
       let(:letters) { 'hello' }
+
       let(:letter_jumble) { LetterJumbleSolver.new(letters: letters).call.data }
       let(:payload) { JSON.parse(subject.body, symbolize_names: true) }
 
